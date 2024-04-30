@@ -14,7 +14,7 @@ public class Account {
     public List<String> savedTaskNames;
     public List<Task> taskList;
     public String username;
-    public String passwordHash;
+    public String password;
 
     public Account(String id, List<String> savedTaskNames, List<Task> taskList, String username, String password) {
         this.id = id;
@@ -26,12 +26,12 @@ public class Account {
 
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.passwordHash = passwordEncoder.encode(password);
+        this.password = passwordEncoder.encode(password);
     }
 
     public boolean isPasswordCorrect(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.matches(password, this.passwordHash);
+        return passwordEncoder.matches(password, this.password);
     }
 
     public String getId() {
@@ -66,8 +66,8 @@ public class Account {
         this.username = username;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
 }
