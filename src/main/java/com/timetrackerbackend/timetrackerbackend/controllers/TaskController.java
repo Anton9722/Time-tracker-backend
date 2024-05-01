@@ -1,6 +1,7 @@
 package com.timetrackerbackend.timetrackerbackend.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,9 +24,21 @@ public class TaskController {
         return "test";
     }
 
-    //lägg till ny task
+    //create a task
     @PostMapping("/task/create/{accountId}")
     public Task createTask(@RequestBody Task task, @PathVariable String accountId) {
         return taskService.createTask(task, accountId);
+    }
+
+    //get a task by id
+    @GetMapping("/task/get/{id}")
+    public Task getTaskById(@PathVariable String id) {
+        return taskService.getTaskById(id);
+    }
+
+    //edit taskTime
+    @PatchMapping("/task/patch/{id}")
+    public Task editTaskTime(@PathVariable String id, @RequestBody Task task) {
+        return taskService.editTaskTime(id, task);
     }
 }
