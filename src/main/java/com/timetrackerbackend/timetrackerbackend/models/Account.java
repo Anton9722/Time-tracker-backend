@@ -10,18 +10,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Document(collection = "Accounts")
 public class Account {
     @Id
-    public String id;
-    public List<String> savedTaskNames;
-    public List<Task> taskList;
-    public String username;
-    public String password;
+    private String id;
+    private List<String> savedTaskNames;
+    private List<Task> taskList;
+    private String username;
+    private String password;
 
-    public Account(String id, List<String> savedTaskNames, List<Task> taskList, String username, String password) {
+    public Account(String id, List<String> savedTaskNames, List<Task> taskList, String username) {
         this.id = id;
         this.savedTaskNames = savedTaskNames != null ? savedTaskNames : new ArrayList<>();
         this.taskList = taskList != null ? taskList : new ArrayList<>();
         this.username = username;
-        setPassword(password);
     }
 
     public void setPassword(String password) {
@@ -31,7 +30,7 @@ public class Account {
 
     public boolean isPasswordCorrect(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.matches(password, this.password);
+        return passwordEncoder.matches(password, getPassword());
     }
 
     public String getId() {
