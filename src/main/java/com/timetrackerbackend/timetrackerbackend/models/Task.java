@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Tasks")
 public class Task {
     @Id
-    public String id;
-    public String taskName;
-    public int taskTime;
-    public String createdOnWeek;
+    private String id;
+    private String taskName;
+    private int taskTime;
+    private String createdOnWeek;
 
     public Task(String id, String taskName, int taskTime, String createdOnWeek) {
         this.id = id;

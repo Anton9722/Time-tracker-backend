@@ -39,4 +39,10 @@ public class AccountController {
         return accountService.getTaskListById(id);
     }
 
+    //check account login 
+    @GetMapping("account/login/{username}/{password}")
+    public Boolean isLoginInfoCorrect(@PathVariable String username, @PathVariable String password) {
+        return accountService.isLoginInfoCorrect(username, password);
+    }
+
 }

@@ -36,5 +36,13 @@ public class AccountService {
         Account account = getAccountById(id);
         return account.getTaskList();
     }
+
+    public Boolean isLoginInfoCorrect(String username, String password) {
+        Query usernameQuery = new Query();
+        usernameQuery.addCriteria(Criteria.where("username").is(username));
+        Account account = mongoOperations.findOne(usernameQuery, Account.class);
+
+        return account.isPasswordCorrect(password);
+    }
     
 }
