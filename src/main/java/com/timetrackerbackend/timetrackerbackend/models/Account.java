@@ -15,12 +15,14 @@ public class Account {
     private List<Task> taskList;
     private String username;
     private String password;
+    private Boolean isAdmin;
 
-    public Account(String id, List<String> savedTaskNames, List<Task> taskList, String username) {
+    public Account(String id, List<String> savedTaskNames, List<Task> taskList, String username, Boolean isAdmin) {
         this.id = id;
         this.savedTaskNames = savedTaskNames != null ? savedTaskNames : new ArrayList<>();
         this.taskList = taskList != null ? taskList : new ArrayList<>();
         this.username = username;
+        this.isAdmin = isAdmin;
     }
 
     public void setPassword(String password) {
@@ -67,6 +69,14 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
 }

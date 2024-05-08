@@ -1,5 +1,6 @@
 package com.timetrackerbackend.timetrackerbackend.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import com.timetrackerbackend.timetrackerbackend.models.Task;
 import com.timetrackerbackend.timetrackerbackend.services.TaskService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class TaskController {
 
     private TaskService taskService;
